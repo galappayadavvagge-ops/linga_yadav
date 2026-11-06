@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="QUICKMART - discover everyday shopping deals in Telugu and English.">
+<title>QUICKMART | Shop Smart. Save More.</title>
+<style>
+:root{--green:#168447;--green2:#20a45b;--lime:#d9f7a5;--ink:#17231c;--muted:#68766e;--bg:#f6f9f6;--card:#fff;--line:#e5ece6;--shadow:0 8px 26px rgba(20,70,40,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Noto Sans Telugu",Arial,sans-serif}
+button,input{font:inherit}button{cursor:pointer}.wrap{max-width:1180px;margin:auto;padding:0 20px}
+header{background:#fff;position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line)}
+.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:900;font-size:25px;letter-spacing:-1px}
+.logo{width:40px;height:40px;border-radius:13px;background:var(--green);display:grid;place-items:center;color:#fff;font-size:23px}
+.brand span:last-child{color:var(--green)}
+.navright{display:flex;align-items:center;gap:10px}.location{font-size:13px;color:var(--muted)}
+.lang{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;font-weight:700;color:var(--green)}
+.hero{margin:26px auto 22px;background:linear-gradient(115deg,#123d27,#168447 65%,#4dbb70);border-radius:25px;color:#fff;padding:36px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;overflow:hidden;min-height:270px}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.12;margin:0 0 12px;letter-spacing:-1.5px}.hero p{color:#e4f4e8;max-width:560px;line-height:1.65;margin:0 0 20px}
+.hero .pill{display:inline-block;background:#d9f7a5;color:#174a2b;border-radius:99px;padding:7px 12px;font-size:12px;font-weight:800;margin-bottom:14px}
+.hero-art{font-size:105px;text-align:center;filter:drop-shadow(0 15px 10px #0c2c1d55)}
+.searchrow{display:flex;gap:10px;max-width:660px}.searchrow input{flex:1;min-width:0;border:0;border-radius:13px;padding:15px 16px;outline:none;color:var(--ink)}
+.searchrow button{border:0;border-radius:13px;background:#d9f7a5;color:#174a2b;padding:0 19px;font-weight:800}
+.section{margin:30px 0}.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:15px}.section h2{font-size:23px;margin:0}.sub{color:var(--muted);font-size:13px;margin-top:5px}
+.categories{display:grid;grid-template-columns:repeat(8,1fr);gap:11px}.cat{border:1px solid var(--line);background:#fff;border-radius:16px;padding:15px 8px;text-align:center;transition:.18s;box-shadow:0 3px 12px #123d2708}.cat:hover,.cat.active{border-color:#78c995;background:#effaf2;transform:translateY(-2px)}.cat .emoji{font-size:29px;display:block;margin-bottom:7px}.cat b{font-size:12px}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.toolbar input{border:1px solid var(--line);border-radius:11px;padding:11px 13px;min-width:220px;flex:1}.toolbar select{border:1px solid var(--line);background:#fff;border-radius:11px;padding:11px;color:var(--ink)}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.product{background:#fff;border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}.product .photo{height:145px;display:grid;place-items:center;background:linear-gradient(135deg,#eff9f0,#f9fcf8);font-size:65px}.productbody{padding:14px;display:flex;flex-direction:column;flex:1}.tag{font-size:10px;color:var(--green);font-weight:800;text-transform:uppercase;letter-spacing:.5px}.product h3{font-size:15px;margin:7px 0 5px}.desc{font-size:12px;color:var(--muted);min-height:34px;line-height:1.4}.price{font-weight:900;font-size:18px;margin:12px 0}.buy{margin-top:auto;border:0;background:var(--green);color:#fff;border-radius:10px;padding:11px;font-weight:800}.buy:hover{background:#116c39}.empty{grid-column:1/-1;text-align:center;padding:35px;color:var(--muted);background:#fff;border-radius:15px}
+.disclosure{background:#edf5ee;border:1px solid #dcebdd;border-radius:14px;padding:15px;color:#526358;font-size:12px;line-height:1.6;margin:30px 0}
+footer{background:#132d1d;color:#e6f2e8;margin-top:40px;padding:30px 0}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot small{color:#b6c9ba}.foot a{color:#d9f7a5}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#17231c;color:white;padding:12px 17px;border-radius:12px;box-shadow:var(--shadow);display:none;z-index:30;max-width:90%;font-size:13px}
+@media(max-width:850px){.categories{grid-template-columns:repeat(4,1fr)}.products{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr;padding:27px}.hero-art{display:none}}
+@media(max-width:480px){.wrap{padding:0 13px}.nav{height:64px}.brand{font-size:21px}.location{display:none}.hero{margin-top:16px;border-radius:18px;padding:23px 18px}.searchrow{flex-direction:column}.searchrow button{padding:13px}.products{gap:10px}.product .photo{height:115px}.productbody{padding:11px}.cat{padding:12px 4px}.cat b{font-size:10px}.section h2{font-size:20px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#" aria-label="QUICKMART home"><span class="logo">Q</span> QUICK<span>MART</span></a>
+    <div class="navright"><span class="location" id="locationText">📍 Lingampally, Hyderabad</span><button class="lang" id="langBtn" type="button">తెలుగు</button></div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <span class="pill" id="heroPill">YOUR EVERYDAY SHOPPING GUIDE</span>
+      <h1 id="heroTitle">Shop Smart.<br>Save More.</h1>
+      <p id="heroText">Discover useful products and shopping offers from trusted online stores — all in one place.</p>
+      <div class="searchrow">
+        <input id="heroSearch" type="search" placeholder="Search groceries, fruits, daily needs..." aria-label="Search products">
+        <button id="searchBtn" type="button">Search</button>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">🛒🥦🍎</div>
+  </section>
+
+  <section class="section">
+    <div class="sectionhead"><div><h2 id="catTitle">Shop by Category</h2><div class="sub" id="catSub">Find what you need quickly</div></div></div>
+    <div class="categories" id="categories"></div>
+  </section>
+
+  <section class="section" id="deals">
+    <div class="sectionhead"><div><h2 id="productsTitle">Popular Picks</h2><div class="sub" id="productsSub">Demo products — add your approved affiliate links before publishing</div></div></div>
+    <div class="toolbar">
+      <input id="productSearch" type="search" placeholder="Search products..." aria-label="Search product list">
+      <select id="sortSelect" aria-label="Sort products">
+        <option value="default">Recommended</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option>
+      </select>
+    </div>
+    <div class="products" id="products" style="margin-top:15px"></div>
+  </section>
+
+  <div class="disclosure" id="disclosure">
+    <strong>Affiliate disclosure:</strong> QUICKMART may earn a commission when you buy through qualifying affiliate links, at no extra cost to you. Product prices and availability can change on partner websites. These sample listings are for demonstration only.
+  </div>
+</main>
+<footer><div class="wrap foot">
+  <div><div class="brand" style="color:white"><span class="logo">Q</span> QUICK<span>MART</span></div><small id="footLine">Your everyday shopping discovery website.</small></div>
+  <div><small>Contact: <a href="mailto:hello@quickmart.example">Add your contact email</a><br>© <span id="year"></span> QUICKMART</small></div>
+</div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+/*
+ QUICKMART SETUP:
+ 1) Replace demo products and sample prices with accurate product information.
+ 2) Add your own approved affiliate URL in each product's affiliateUrl field.
+ 3) Use only product images/data permitted by the affiliate program.
+ 4) Do not publish a product as a live offer until its link and price are checked.
+*/
+const products = [
+ {id:1,category:"grocery",emoji:"🍚",name:{en:"Rice – 5 kg",te:"బియ్యం – 5 కిలోలు"},desc:{en:"Everyday kitchen essential",te:"రోజువారీ వంటకు అవసరమైన సరుకు"},price:350,store:"Partner store",affiliateUrl:""},
+ {id:2,category:"grocery",emoji:"🫘",name:{en:"Toor Dal – 1 kg",te:"కందిపప్పు – 1 కిలో"},desc:{en:"A pantry staple",te:"ఇంట్లో ఉండాల్సిన నిత్యావసరం"},price:140,store:"Partner store",affiliateUrl:""},
+ {id:3,category:"grocery",emoji:"🫗",name:{en:"Cooking Oil – 1 L",te:"వంట నూనె – 1 లీటర్"},desc:{en:"Compare available brands",te:"అందుబాటులో ఉన్న బ్రాండ్లను పోల్చండి"},price:150,store:"Partner store",affiliateUrl:""},
+ {id:4,category:"vegetables",emoji:"🥦",name:{en:"Fresh Vegetables",te:"తాజా కూరగాయలు"},desc:{en:"Explore partner store listings",te:"పార్ట్నర్ స్టోర్‌లో అందుబాటులో ఉన్నవి చూడండి"},price:null,store:"Partner store",affiliateUrl:""},
+ {id:5,category:"fruits",emoji:"🍎",name:{en:"Fresh Apples",te:"తాజా యాపిల్స్"},desc:{en:"Check today's partner offers",te:"ఈరోజు పార్ట్నర్ ఆఫర్లు చూడండి"},price:null,store:"Partner store",affiliateUrl:""},
+ {id:6,category:"dairy",emoji:"🥛",name:{en:"Milk & Dairy",te:"పాలు & పాల ఉత్పత్తులు"},desc:{en:"Browse dairy products",te:"పాల ఉత్పత్తులను చూడండి"},price:null,store:"Partner store",affiliateUrl:""},
+ {id:7,category:"home",emoji:"🧼",name:{en:"Home Cleaning",te:"ఇంటి శుభ్రత ఉత్పత్తులు"},desc:{en:"Daily home-care essentials",te:"రోజువారీ ఇంటి అవసరాలు"},price:120,store:"Partner store",affiliateUrl:""},
+ {id:8,category:"snacks",emoji:"🍪",name:{en:"Snacks & Biscuits",te:"స్నాక్స్ & బిస్కెట్లు"},desc:{en:"Explore snack offers",te:"స్నాక్స్ ఆఫర్లు చూడండి"},price:null,store:"Partner store",affiliateUrl:""}
+];
+const categories=[
+ {id:"all",emoji:"🛍️",en:"All",te:"అన్నీ"},
+ {id:"grocery",emoji:"🍚",en:"Grocery",te:"కిరాణా"},
+ {id:"vegetables",emoji:"🥦",en:"Vegetables",te:"కూరగాయలు"},
+ {id:"fruits",emoji:"🍎",en:"Fruits",te:"పండ్లు"},
+ {id:"dairy",emoji:"🥛",en:"Dairy",te:"పాల ఉత్పత్తులు"},
+ {id:"home",emoji:"🧼",en:"Home Care",te:"ఇంటి అవసరాలు"},
+ {id:"snacks",emoji:"🍪",en:"Snacks",te:"స్నాక్స్"},
+ {id:"electronics",emoji:"📱",en:"Electronics",te:"ఎలక్ట్రానిక్స్"}
+];
+let language="en", activeCategory="all";
+const $=id=>document.getElementById(id);
+const text={
+ en:{lang:"తెలుగు",pill:"YOUR EVERYDAY SHOPPING GUIDE",title:"Shop Smart.<br>Save More.",hero:"Discover useful products and shopping offers from trusted online stores — all in one place.",search:"Search groceries, fruits, daily needs...",searchBtn:"Search",cat:"Shop by Category",catSub:"Find what you need quickly",picks:"Popular Picks",sub:"Demo products — add your approved affiliate links before publishing",all:"All",recommended:"Recommended",low:"Price: low to high",high:"Price: high to low",buy:"View Deal",price:"Demo price",noPrice:"Check partner price",notReady:"Affiliate link not added yet. Add your approved link in the product list before publishing.",empty:"No products found. Try another search.",disclosure:"Affiliate disclosure: QUICKMART may earn a commission when you buy through qualifying affiliate links, at no extra cost to you. Product prices and availability can change on partner websites. These sample listings are for demonstration only.",foot:"Your everyday shopping discovery website."},
+ te:{lang:"English",pill:"మీ రోజువారీ షాపింగ్ గైడ్",title:"తెలివిగా కొనండి.<br>మరింత ఆదా చేయండి.",hero:"నమ్మకమైన ఆన్‌లైన్ స్టోర్లలోని ఉపయోగకరమైన ఉత్పత్తులు, షాపింగ్ ఆఫర్లను ఒకే చోట చూడండి.",search:"కిరాణా, పండ్లు, రోజువారీ వస్తువులు వెతకండి...",searchBtn:"వెతకండి",cat:"కేటగిరీల వారీగా షాపింగ్",catSub:"మీకు కావాల్సినవి సులభంగా కనుగొనండి",picks:"ప్రసిద్ధ ఉత్పత్తులు",sub:"డెమో ఉత్పత్తులు — ప్రచురించే ముందు మీ Affiliate Links జోడించండి",all:"అన్నీ",recommended:"సూచించినవి",low:"ధర: తక్కువ నుంచి ఎక్కువ",high:"ధర: ఎక్కువ నుంచి తక్కువ",buy:"ఆఫర్ చూడండి",price:"డెమో ధర",noPrice:"పార్ట్నర్ ధర చూడండి",notReady:"ఇంకా Affiliate Link జోడించలేదు. ప్రచురించే ముందు Product Listలో మీ ఆమోదిత Link జోడించండి.",empty:"ఉత్పత్తులు కనిపించలేదు. మరో పదంతో వెతకండి.",disclosure:"Affiliate ప్రకటన: QUICKMARTలోని అర్హమైన Affiliate Link ద్వారా కొనుగోలు చేస్తే మీకు అదనపు ఖర్చు లేకుండా మాకు Commission రావచ్చు. ధరలు, లభ్యత పార్ట్నర్ వెబ్‌సైట్‌లో మారవచ్చు. ఇవి నమూనా ఉత్పత్తులు మాత్రమే.",foot:"మీ రోజువారీ షాపింగ్ సమాచార వెబ్‌సైట్."}
+};
+function renderCategories(){
+ $("categories").innerHTML=categories.map(c=>`<button class="cat ${activeCategory===c.id?"active":""}" data-cat="${c.id}"><span class="emoji">${c.emoji}</span><b>${language==="en"?c.en:c.te}</b></button>`).join("");
+ document.querySelectorAll("[data-cat]").forEach(b=>b.addEventListener("click",()=>{activeCategory=b.dataset.cat;renderCategories();renderProducts()}));
+}
+function renderProducts(){
+ const q=$("productSearch").value.trim().toLowerCase();
+ let list=products.filter(p=>(activeCategory==="all"||p.category===activeCategory)&&((p.name.en+" "+p.name.te+" "+p.desc.en).toLowerCase().includes(q)));
+ const sort=$("sortSelect").value;
+ if(sort==="low")list.sort((a,b)=>(a.price??Infinity)-(b.price??Infinity));
+ if(sort==="high")list.sort((a,b)=>(b.price??-1)-(a.price??-1));
+ $("products").innerHTML=list.length?list.map(p=>`<article class="product"><div class="photo" aria-label="${p.name.en}">${p.emoji}</div><div class="productbody"><span class="tag">${p.category}</span><h3>${language==="en"?p.name.en:p.name.te}</h3><div class="desc">${language==="en"?p.desc.en:p.desc.te}</div><div class="price">${p.price===null?(language==="en"?text.en.noPrice:text.te.noPrice):"₹"+p.price+"*"} </div><button class="buy" data-buy="${p.id}">${language==="en"?text.en.buy:text.te.buy} ↗</button></div></article>`).join(""):`<div class="empty">${language==="en"?text.en.empty:text.te.empty}</div>`;
+ document.querySelectorAll("[data-buy]").forEach(b=>b.addEventListener("click",()=>buyProduct(Number(b.dataset.buy))));
+}
+function buyProduct(id){
+ const p=products.find(x=>x.id===id);
+ if(p&&p.affiliateUrl){window.open(p.affiliateUrl,"_blank","noopener,noreferrer");}
+ else showToast(language==="en"?text.en.notReady:text.te.notReady);
+}
+function showToast(message){const t=$("toast");t.textContent=message;t.style.display="block";clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.style.display="none",4200)}
+function setLanguage(lang){
+ language=lang;document.documentElement.lang=lang==="te"?"te":"en";
+ const t=text[lang];$("langBtn").textContent=t.lang;$("heroPill").textContent=t.pill;$("heroTitle").innerHTML=t.title;$("heroText").textContent=t.hero;$("heroSearch").placeholder=t.search;$("searchBtn").textContent=t.searchBtn;$("catTitle").textContent=t.cat;$("catSub").textContent=t.catSub;$("productsTitle").textContent=t.picks;$("productsSub").textContent=t.sub;$("disclosure").textContent=t.disclosure;$("footLine").textContent=t.foot;
+ $("sortSelect").options[0].text=t.recommended;$("sortSelect").options[1].text=t.low;$("sortSelect").options[2].text=t.high;
+ renderCategories();renderProducts();
+}
+$("langBtn").addEventListener("click",()=>setLanguage(language==="en"?"te":"en"));
+$("productSearch").addEventListener("input",renderProducts);
+$("sortSelect").addEventListener("change",renderProducts);
+$("searchBtn").addEventListener("click",()=>{$("productSearch").value=$("heroSearch").value;renderProducts();$("deals").scrollIntoView({behavior:"smooth"})});
+$("heroSearch").addEventListener("keydown",e=>{if(e.key==="Enter")$("searchBtn").click()});
+$("year").textContent=new Date().getFullYear();
+renderCategories();renderProducts();
+</script>
+</body>
+</html>
