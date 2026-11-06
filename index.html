@@ -106,6 +106,26 @@ footer{background:#132d1d;color:#e6f2e8;margin-top:40px;padding:30px 0}.foot{dis
   margin: 12px 0;
 }
 
+.old-price {
+  color: #888;
+  font-size: 13px;
+  font-weight: normal;
+  text-decoration: line-through;
+  margin-right: 5px;
+}
+
+.discount {
+  color: #b91c1c;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.demo-label {
+  color: #777;
+  font-size: 11px;
+  font-weight: normal;
+}
+
 .buy {
   width: 100%;
   background: #0c831f;
@@ -242,7 +262,7 @@ function renderProducts(){
  const sort=$("sortSelect").value;
  if(sort==="low")list.sort((a,b)=>(a.price??Infinity)-(b.price??Infinity));
  if(sort==="high")list.sort((a,b)=>(b.price??-1)-(a.price??-1));
- $("products").innerHTML=list.length?list.map(p=>`<article class="product"><div class="photo"><img src="${p.image}" alt="${p.name.en}" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.textContent='${p.emoji}'"></div><div class="productbody"><span class="tag">${p.category}</span><h3>${language==="en"?p.name.en:p.name.te}</h3><div class="desc">${language==="en"?p.desc.en:p.desc.te}</div><div class="price">${p.price===null?(language==="en"?text.en.noPrice:text.te.noPrice):"₹"+p.price+"*"} </div><button class="buy" data-buy="${p.id}">${language==="en"?text.en.buy:text.te.buy} ↗</button></div></article>`).join(""):`<div class="empty">${language==="en"?text.en.empty:text.te.empty}</div>`;
+ $("products").innerHTML=list.length?list.map(p=>`<article class="product"><div class="photo"><img src="${p.image}" alt="${p.name.en}" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.textContent='${p.emoji}'"></div><div class="productbody"><span class="tag">${p.category}</span><h3>${language==="en"?p.name.en:p.name.te}</h3><div class="desc">${language==="en"?p.desc.en:p.desc.te}</div><div class="price">${p.price===null?(language==="en"?text.en.noPrice:text.te.noPrice):((p.mrp&&p.mrp>p.price)?('<span class="old-price">₹'+p.mrp+'</span> <span class="discount">'+Math.round((p.mrp-p.price)/p.mrp*100)+'% OFF</span><br>'):'<small class="demo-label">'+(language==="en"?"Demo price":"నమూనా ధర")+"</small><br>") + "₹"+p.price} </div><button class="buy" data-buy="${p.id}">${language==="en"?text.en.buy:text.te.buy} ↗</button></div></article>`).join(""):`<div class="empty">${language==="en"?text.en.empty:text.te.empty}</div>`;
  document.querySelectorAll("[data-buy]").forEach(b=>b.addEventListener("click",()=>buyProduct(Number(b.dataset.buy))));
 }
 function buyProduct(id){
