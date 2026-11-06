@@ -66,6 +66,13 @@ footer{background:#132d1d;color:#e6f2e8;margin-top:40px;padding:30px 0}.foot{dis
   padding: 14px;
 }
 
+.photo img {
+  width: 100%;
+  height: 145px;
+  object-fit: cover;
+  display: block;
+}
+
 .tag {
   background: #dcfce7;
   color: #15803d;
@@ -195,14 +202,14 @@ footer{background:#132d1d;color:#e6f2e8;margin-top:40px;padding:30px 0}.foot{dis
  4) Do not publish a product as a live offer until its link and price are checked.
 */
 const products = [
- {id:1,category:"grocery",emoji:"🍚",name:{en:"Rice – 5 kg",te:"బియ్యం – 5 కిలోలు"},desc:{en:"Everyday kitchen essential",te:"రోజువారీ వంటకు అవసరమైన సరుకు"},price:350,store:"Partner store",affiliateUrl:""},
- {id:2,category:"grocery",emoji:"🫘",name:{en:"Toor Dal – 1 kg",te:"కందిపప్పు – 1 కిలో"},desc:{en:"A pantry staple",te:"ఇంట్లో ఉండాల్సిన నిత్యావసరం"},price:140,store:"Partner store",affiliateUrl:""},
- {id:3,category:"grocery",emoji:"🫗",name:{en:"Cooking Oil – 1 L",te:"వంట నూనె – 1 లీటర్"},desc:{en:"Compare available brands",te:"అందుబాటులో ఉన్న బ్రాండ్లను పోల్చండి"},price:150,store:"Partner store",affiliateUrl:""},
- {id:4,category:"vegetables",emoji:"🥦",name:{en:"Fresh Vegetables",te:"తాజా కూరగాయలు"},desc:{en:"Explore partner store listings",te:"పార్ట్నర్ స్టోర్‌లో అందుబాటులో ఉన్నవి చూడండి"},price:null,store:"Partner store",affiliateUrl:""},
- {id:5,category:"fruits",emoji:"🍎",name:{en:"Fresh Apples",te:"తాజా యాపిల్స్"},desc:{en:"Check today's partner offers",te:"ఈరోజు పార్ట్నర్ ఆఫర్లు చూడండి"},price:null,store:"Partner store",affiliateUrl:""},
- {id:6,category:"dairy",emoji:"🥛",name:{en:"Milk & Dairy",te:"పాలు & పాల ఉత్పత్తులు"},desc:{en:"Browse dairy products",te:"పాల ఉత్పత్తులను చూడండి"},price:null,store:"Partner store",affiliateUrl:""},
- {id:7,category:"home",emoji:"🧼",name:{en:"Home Cleaning",te:"ఇంటి శుభ్రత ఉత్పత్తులు"},desc:{en:"Daily home-care essentials",te:"రోజువారీ ఇంటి అవసరాలు"},price:120,store:"Partner store",affiliateUrl:""},
- {id:8,category:"snacks",emoji:"🍪",name:{en:"Snacks & Biscuits",te:"స్నాక్స్ & బిస్కెట్లు"},desc:{en:"Explore snack offers",te:"స్నాక్స్ ఆఫర్లు చూడండి"},price:null,store:"Partner store",affiliateUrl:""}
+ {id:1,category:"grocery",emoji:"🍚",image:"https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",name:{en:"Rice – 5 kg",te:"బియ్యం – 5 కిలోలు"},desc:{en:"Everyday kitchen essential",te:"రోజువారీ వంటకు అవసరమైన సరుకు"},price:350,store:"Partner store",affiliateUrl:""},
+ {id:2,category:"grocery",emoji:"🫘",image:"https://images.unsplash.com/photo-1515543904379-3d757afe72e4?auto=format&fit=crop&w=600&q=80",name:{en:"Toor Dal – 1 kg",te:"కందిపప్పు – 1 కిలో"},desc:{en:"A pantry staple",te:"ఇంట్లో ఉండాల్సిన నిత్యావసరం"},price:140,store:"Partner store",affiliateUrl:""},
+ {id:3,category:"grocery",emoji:"🫗",image:"https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80",name:{en:"Cooking Oil – 1 L",te:"వంట నూనె – 1 లీటర్"},desc:{en:"Compare available brands",te:"అందుబాటులో ఉన్న బ్రాండ్లను పోల్చండి"},price:150,store:"Partner store",affiliateUrl:""},
+ {id:4,category:"vegetables",emoji:"🥦",image:"https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80",name:{en:"Fresh Vegetables",te:"తాజా కూరగాయలు"},desc:{en:"Explore partner store listings",te:"పార్ట్నర్ స్టోర్‌లో అందుబాటులో ఉన్నవి చూడండి"},price:null,store:"Partner store",affiliateUrl:""},
+ {id:5,category:"fruits",emoji:"🍎",image:"https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=600&q=80",name:{en:"Fresh Apples",te:"తాజా యాపిల్స్"},desc:{en:"Check today's partner offers",te:"ఈరోజు పార్ట్నర్ ఆఫర్లు చూడండి"},price:null,store:"Partner store",affiliateUrl:""},
+ {id:6,category:"dairy",emoji:"🥛",image:"https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=600&q=80",name:{en:"Milk & Dairy",te:"పాలు & పాల ఉత్పత్తులు"},desc:{en:"Browse dairy products",te:"పాల ఉత్పత్తులను చూడండి"},price:null,store:"Partner store",affiliateUrl:""},
+ {id:7,category:"home",emoji:"🧼",image:"https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=600&q=80",name:{en:"Home Cleaning",te:"ఇంటి శుభ్రత ఉత్పత్తులు"},desc:{en:"Daily home-care essentials",te:"రోజువారీ ఇంటి అవసరాలు"},price:120,store:"Partner store",affiliateUrl:""},
+ {id:8,category:"snacks",emoji:"🍪",image:"https://images.unsplash.com/photo-1599490659213-e2b9527bd087?auto=format&fit=crop&w=600&q=80",name:{en:"Snacks & Biscuits",te:"స్నాక్స్ & బిస్కెట్లు"},desc:{en:"Explore snack offers",te:"స్నాక్స్ ఆఫర్లు చూడండి"},price:null,store:"Partner store",affiliateUrl:""}
 ];
 const categories=[
  {id:"all",emoji:"🛍️",en:"All",te:"అన్నీ"},
@@ -230,7 +237,7 @@ function renderProducts(){
  const sort=$("sortSelect").value;
  if(sort==="low")list.sort((a,b)=>(a.price??Infinity)-(b.price??Infinity));
  if(sort==="high")list.sort((a,b)=>(b.price??-1)-(a.price??-1));
- $("products").innerHTML=list.length?list.map(p=>`<article class="product"><div class="photo" aria-label="${p.name.en}">${p.emoji}</div><div class="productbody"><span class="tag">${p.category}</span><h3>${language==="en"?p.name.en:p.name.te}</h3><div class="desc">${language==="en"?p.desc.en:p.desc.te}</div><div class="price">${p.price===null?(language==="en"?text.en.noPrice:text.te.noPrice):"₹"+p.price+"*"} </div><button class="buy" data-buy="${p.id}">${language==="en"?text.en.buy:text.te.buy} ↗</button></div></article>`).join(""):`<div class="empty">${language==="en"?text.en.empty:text.te.empty}</div>`;
+ $("products").innerHTML=list.length?list.map(p=>`<article class="product"><div class="photo"><img src="${p.image}" alt="${p.name.en}" loading="lazy"></div><div class="productbody"><span class="tag">${p.category}</span><h3>${language==="en"?p.name.en:p.name.te}</h3><div class="desc">${language==="en"?p.desc.en:p.desc.te}</div><div class="price">${p.price===null?(language==="en"?text.en.noPrice:text.te.noPrice):"₹"+p.price+"*"} </div><button class="buy" data-buy="${p.id}">${language==="en"?text.en.buy:text.te.buy} ↗</button></div></article>`).join(""):`<div class="empty">${language==="en"?text.en.empty:text.te.empty}</div>`;
  document.querySelectorAll("[data-buy]").forEach(b=>b.addEventListener("click",()=>buyProduct(Number(b.dataset.buy))));
 }
 function buyProduct(id){
