@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#147a45">
+<title>MILKDOOR | Fresh Milk at Your Doorstep</title>
+<style>
+:root{--g:#147a45;--d:#103d2a;--p:#e8f7e9;--ink:#203128;--muted:#637269}
+*{box-sizing:border-box}body{margin:0;font-family:Arial, sans-serif;color:var(--ink);background:#fbfff9}
+header{position:sticky;top:0;background:#fffffff2;border-bottom:1px solid #e5eee5;z-index:3}
+nav{max-width:1080px;margin:auto;padding:15px 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:900;color:var(--g);letter-spacing:1px}.logo span{color:var(--d)}
+nav a,.btn{font-weight:700;text-decoration:none}nav a{color:var(--d);margin-left:18px;font-size:14px}
+.btn{display:inline-block;padding:13px 18px;border-radius:12px;background:var(--g);color:white;border:0;cursor:pointer}
+.hero{background:linear-gradient(120deg,#e5f7e8,#f8fff5);padding:65px 20px}
+.inner{max-width:1080px;margin:auto;display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center}
+.pill{background:#d3f0d8;color:var(--d);padding:8px 12px;border-radius:30px;font-size:12px;font-weight:800}
+h1{font-size:clamp(38px,6vw,60px);line-height:1.05;color:var(--d);margin:20px 0 12px}h1 span{color:var(--g)}
+.lead{font-size:18px;line-height:1.6;color:var(--muted)}
+.art{border-radius:28px;background:linear-gradient(145deg,#16894d,#0d5932);min-height:280px;display:grid;place-items:center;text-align:center;color:white}
+.art b{display:block;font-size:25px;margin-top:8px}.bottle{font-size:100px}
+section{max-width:1080px;margin:auto;padding:52px 20px}.head{text-align:center;margin-bottom:28px}.head h2{font-size:31px;color:var(--d);margin:0 0 8px}.head p{color:var(--muted);margin:0}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:white;border:1px solid #e3eee3;border-radius:18px;padding:22px;box-shadow:0 8px 24px #17452a09}
+.emoji{font-size:42px}.card h3{color:var(--d);margin:12px 0 6px}.card p{color:var(--muted);line-height:1.5;font-size:14px;min-height:42px}
+.price{font-size:25px;font-weight:900;color:var(--g)}.price small{font-size:13px;color:var(--muted);font-weight:500}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{background:#f0faf0;border-radius:16px;padding:22px;text-align:center}.num{background:var(--g);color:white;border-radius:50%;width:36px;height:36px;display:grid;place-items:center;margin:auto;font-weight:900}.step h3{color:var(--d)}.step p{color:var(--muted);font-size:14px;line-height:1.5}
+.areas{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.area{background:white;border:1px solid #e3eee3;border-radius:25px;padding:12px 17px;font-weight:700;color:var(--d)}
+.order{background:#eff9ef;border-radius:24px;padding:28px;display:grid;grid-template-columns:.8fr 1.2fr;gap:25px}.order h2{color:var(--d);font-size:28px;margin-top:0}.order p{color:var(--muted);line-height:1.6}
+form{display:grid;grid-template-columns:1fr 1fr;gap:12px}label{display:block;font-size:12px;font-weight:800;margin-bottom:6px;color:#43564a}input,select,textarea{width:100%;padding:12px;border:1px solid #d8e6d9;border-radius:10px;background:white;font:inherit}textarea{min-height:70px}.full{grid-column:1/-1}.note{font-size:12px;color:var(--muted)}
+footer{background:var(--d);color:white;text-align:center;padding:28px 18px}footer p{color:#c9e2d0;font-size:13px}
+@media(max-width:720px){nav nav{display:none}.inner,.order{grid-template-columns:1fr}.art{min-height:200px}.products,.steps{grid-template-columns:1fr}form{grid-template-columns:1fr}.full{grid-column:auto}.hero{padding:45px 18px}section{padding:40px 16px}}
+</style>
+</head>
+<body>
+<header><nav><div class="logo">MILK<span>DOOR</span></div><div><a href="#milk">Milk</a><a href="#areas">Areas</a><a href="#order">Order</a></div><a class="btn" href="#order">Subscribe</a></nav></header>
+<main>
+<div class="hero"><div class="inner"><div><span class="pill">FRESH MILK • MORNING & EVENING</span><h1>Freshness at your <span>doorstep.</span></h1><p class="lead">Daily milk delivery for apartments and families in Lingampally, Nallagandla and Chandanagar. Choose your milk, quantity and delivery time.</p><a class="btn" href="#order">Start Your Subscription</a></div><div class="art"><div><div class="bottle">🥛</div><b>Good morning starts here.</b><p>Fresh milk, delivered with care.</p></div></div></div></div>
+<section id="milk"><div class="head"><h2>Choose Your Milk</h2><p>Simple daily pricing per litre</p></div><div class="products">
+<div class="card"><div class="emoji">🐄</div><h3>Cow Milk</h3><p>For your everyday household needs.</p><div class="price">₹60 <small>/ litre</small></div></div>
+<div class="card"><div class="emoji">🐃</div><h3>Buffalo Milk</h3><p>A richer option for tea, coffee, curd and cooking.</p><div class="price">₹80 <small>/ litre</small></div></div>
+<div class="card"><div class="emoji">🥛</div><h3>Toned Milk</h3><p>A lighter everyday milk option.</p><div class="price">₹50 <small>/ litre</small></div></div>
+</div><p class="note" style="text-align:center;margin-top:16px">Final availability and price will be reconfirmed before subscription starts.</p></section>
+<section><div class="head"><h2>How MILKDOOR Works</h2><p>Three easy steps to get milk at your apartment</p></div><div class="steps">
+<div class="step"><div class="num">1</div><h3>Choose Milk</h3><p>Select milk type, quantity and delivery preference.</p></div>
+<div class="step"><div class="num">2</div><h3>Share Flat Details</h3><p>Enter your apartment, tower and flat number.</p></div>
+<div class="step"><div class="num">3</div><h3>Confirm Order</h3><p>Send your request on WhatsApp. We will confirm availability and start date.</p></div>
+</div></section>
+<section id="areas"><div class="head"><h2>Our Delivery Areas</h2><p>Launching in selected apartment communities</p></div><div class="areas"><span class="area">📍 Lingampally</span><span class="area">📍 Nallagandla</span><span class="area">📍 Chandanagar</span></div></section>
+<section id="order"><div class="order"><div><h2>Start Your Milk Subscription</h2><p>Share your details. Your order request will open in WhatsApp for confirmation.</p><p><b>Proposed delivery windows</b><br>Morning: 5:00 AM – 8:00 AM<br>Evening: 5:00 PM – 8:00 PM</p><p class="note">Timings depend on your apartment route and will be confirmed by our team.</p></div>
+<form id="orderForm">
+<div><label for="name">Customer name *</label><input id="name" required placeholder="Your name"></div>
+<div><label for="phone">Mobile number *</label><input id="phone" required inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number"></div>
+<div><label for="area">Area *</label><select id="area" required><option value="">Choose area</option><option>Lingampally</option><option>Nallagandla</option><option>Chandanagar</option></select></div>
+<div><label for="apartment">Apartment / Society *</label><input id="apartment" required placeholder="Apartment name"></div>
+<div><label for="flat">Tower & Flat number *</label><input id="flat" required placeholder="e.g. B-402"></div>
+<div><label for="milk">Milk type *</label><select id="milk" required><option value="">Choose milk</option><option>Cow Milk — ₹60/L</option><option>Buffalo Milk — ₹80/L</option><option>Toned Milk — ₹50/L</option></select></div>
+<div><label for="qty">Quantity per delivery</label><select id="qty"><option>500 ml</option><option>1 litre</option><option>1.5 litres</option><option>2 litres</option><option>3 litres</option></select></div>
+<div><label for="slot">Delivery preference *</label><select id="slot" required><option value="">Choose slot</option><option>Morning</option><option>Evening</option><option>Both morning and evening</option></select></div>
+<div class="full"><label for="notes">Additional instructions</label><textarea id="notes" placeholder="Start date, gate instructions, etc."></textarea></div>
+<div class="full"><button class="btn" type="submit">Send Order Request on WhatsApp</button><p class="note">No online payment is collected on this website. Order begins only after availability and price confirmation.</p></div>
+</form></div></section>
+</main>
+<footer><div class="logo" style="color:#a8e6b7">MILKDOOR</div><p>Freshness Every Morning & Evening</p><p>Serving Lingampally • Nallagandla • Chandanagar</p><p>© 2026 MILKDOOR</p></footer>
+<script>
+const BUSINESS_WHATSAPP="916302200371";
+document.getElementById("orderForm").addEventListener("submit",function(e){e.preventDefault();const v=id=>document.getElementById(id).value.trim();const message="MILKDOOR Subscription Request\nName: "+v("name")+"\nMobile: "+v("phone")+"\nArea: "+v("area")+"\nApartment: "+v("apartment")+"\nTower / Flat: "+v("flat")+"\nMilk: "+v("milk")+"\nQuantity: "+v("qty")+"\nDelivery: "+v("slot")+"\nInstructions: "+(v("notes")||"None")+"\n\nPlease confirm availability, price and start date.";window.open("https://wa.me/"+BUSINESS_WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener");});
+</script>
+</body></html>
