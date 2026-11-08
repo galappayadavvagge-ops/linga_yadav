@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="te">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#147a45"><title>MILKDOOR Admin Dashboard</title>
+<style>
+:root{--g:#147a45;--d:#103d2a;--p:#e8f7e9;--ink:#203128;--muted:#637269;--line:#e2ece3}
+*{box-sizing:border-box}body{margin:0;background:#f5faf5;color:var(--ink);font-family:Arial,sans-serif}
+header{background:white;border-bottom:1px solid var(--line);padding:15px 20px;position:sticky;top:0;z-index:2}
+.top{max-width:1180px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-size:23px;font-weight:900;color:var(--g)}.brand span{color:var(--d)}.top a{color:var(--d);font-weight:bold;text-decoration:none}
+main{max-width:1180px;margin:25px auto;padding:0 16px}.intro{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}.intro h1{margin:0;color:var(--d);font-size:30px}.muted{color:var(--muted);font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:20px 0}.stat,.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:18px}.stat small{color:var(--muted);font-weight:bold}.stat strong{display:block;font-size:28px;color:var(--g);margin-top:8px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.tab,button{border:0;border-radius:10px;padding:11px 15px;font-weight:bold;cursor:pointer}.tab{background:#e8f2e9;color:var(--d)}.tab.active,button.primary{background:var(--g);color:white}button.secondary{background:#e8f2e9;color:var(--d)}button.danger{background:#fff0ef;color:#a22}
+.panel h2{color:var(--d);margin:0 0 15px;font-size:21px}.gridform{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}label{display:block;font-size:12px;font-weight:bold;margin-bottom:5px;color:#43564a}input,select{width:100%;padding:11px;border:1px solid #d5e3d6;border-radius:9px;background:white;font:inherit;min-width:0}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.tablewrap{overflow:auto;margin-top:14px}table{border-collapse:collapse;width:100%;min-width:760px}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--line);font-size:13px}th{color:var(--d);background:#f5faf5}.empty{text-align:center;color:var(--muted);padding:25px}.hidden{display:none}.pill{display:inline-block;padding:5px 8px;border-radius:20px;background:var(--p);color:var(--d);font-size:11px;font-weight:bold}.notice{background:#fff8e7;border:1px solid #f2e3b7;border-radius:12px;padding:12px;color:#70551a;font-size:13px;line-height:1.5;margin:16px 0}.right{display:flex;gap:8px;flex-wrap:wrap}
+@media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}.gridform{grid-template-columns:1fr 1fr}.intro h1{font-size:25px}}
+@media(max-width:480px){.gridform{grid-template-columns:1fr}.cards{gap:8px}.stat{padding:13px}.stat strong{font-size:23px}}
+</style></head>
+<body>
+<header><div class="top"><div class="brand">MILK<span>DOOR</span> <span style="font-size:12px;color:#637269">ADMIN</span></div><a href="./">← View Website</a></div></header>
+<main>
+<div class="intro"><div><h1>Admin Dashboard</h1><p class="muted">Customer registration • Daily delivery • Monthly billing</p></div><div class="right"><button class="secondary" id="exportBtn">Export CSV</button><button class="secondary" id="backupBtn">Download Backup</button></div></div>
+<div class="notice"><b>Important:</b> This first version saves data only in this browser/device. It is not a shared online database and does not automatically import WhatsApp orders. Do not use this as your only business record; download backups regularly.</div>
+<div class="cards">
+<div class="stat"><small>Total Customers</small><strong id="totalCustomers">0</strong></div>
+<div class="stat"><small>Active Customers</small><strong id="activeCustomers">0</strong></div>
+<div class="stat"><small>Today's Delivery Litres</small><strong id="todayLitres">0 L</strong></div>
+<div class="stat"><small>Pending Payments</small><strong id="pendingAmount">₹0</strong></div>
+</div>
+<div class="tabs">
+<button class="tab active" data-tab="customers">Customers</button><button class="tab" data-tab="delivery">Daily Delivery List</button><button class="tab" data-tab="billing">Billing & Payments</button>
+</div>
+<section class="panel" id="customers">
+<h2>Add Customer</h2>
+<form id="customerForm">
+<div class="gridform">
+<div><label>Customer Name *</label><input id="cname" required placeholder="Full name"></div>
+<div><label>Mobile Number *</label><input id="cphone" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number"></div>
+<div><label>Area *</label><select id="carea" required><option value="">Select area</option><option>Lingampally</option><option>Nallagandla</option><option>Chandanagar</option></select></div>
+<div><label>Apartment / Society *</label><input id="capartment" required placeholder="Apartment name"></div>
+<div><label>Tower & Flat</label><input id="cflat" placeholder="B-402"></div>
+<div><label>Milk Type *</label><select id="cmilk" required><option value="">Select milk</option><option value="Cow Milk">Cow Milk</option><option value="Buffalo Milk">Buffalo Milk</option><option value="Toned Milk">Toned Milk</option></select></div>
+<div><label>Quantity per delivery (litres) *</label><input id="cqty" type="number" min=".25" step=".25" value="1" required></div>
+<div><label>Delivery Slot *</label><select id="cslot" required><option>Morning</option><option>Evening</option><option>Both</option></select></div>
+<div><label>Status</label><select id="cstatus"><option>Active</option><option>Paused</option></select></div>
+</div><div class="actions"><button class="primary" type="submit">Save Customer</button><button class="secondary" type="reset">Clear</button></div>
+</form>
+<h2 style="margin-top:28px">Customer Records</h2><div class="tablewrap"><table><thead><tr><th>Name</th><th>Mobile</th><th>Area / Apartment</th><th>Flat</th><th>Milk</th><th>Qty</th><th>Slot</th><th>Status</th><th>Action</th></tr></thead><tbody id="customerRows"></tbody></table></div><div id="customerEmpty" class="empty">No customers yet. Add your first customer above.</div>
+</section>
+<section class="panel hidden" id="delivery">
+<h2>Daily Delivery List</h2>
+<div class="gridform"><div><label>Delivery Date</label><input type="date" id="deliveryDate"></div><div><label>Delivery Slot</label><select id="deliverySlot"><option>Morning</option><option>Evening</option></select></div><div style="display:flex;align-items:end"><button class="primary" id="makeList" type="button">Generate List</button></div></div>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>Customer</th><th>Apartment / Flat</th><th>Mobile</th><th>Milk</th><th>Quantity (L)</th><th>Delivered</th></tr></thead><tbody id="deliveryRows"></tbody></table></div><div id="deliveryEmpty" class="empty">Choose date and slot, then generate the list.</div>
+</section>
+<section class="panel hidden" id="billing">
+<h2>Monthly Billing & Payment Tracking</h2>
+<div class="gridform"><div><label>Billing Month</label><input type="month" id="billMonth"></div><div><label>Customer</label><select id="billCustomer"><option value="">All customers</option></select></div><div style="display:flex;align-items:end"><button class="primary" id="makeBill" type="button">Calculate Estimate</button></div></div>
+<p class="muted">Estimate assumes delivery every day of the selected month. Adjust the amount manually if a customer paused or missed deliveries.</p>
+<div class="tablewrap"><table><thead><tr><th>Customer</th><th>Milk</th><th>Qty / delivery</th><th>Slot</th><th>Estimated total</th><th>Payment status</th><th>Action</th></tr></thead><tbody id="billRows"></tbody></table></div><div id="billEmpty" class="empty">Select a month and calculate bills.</div>
+</section>
+<p class="muted" style="text-align:center;margin:22px">MILKDOOR Admin • Local browser version</p>
+</main>
+<script>
+const KEY='milkdoor_admin_customers_v1';
+let customers=JSON.parse(localStorage.getItem(KEY)||'[]');
+const prices={'Cow Milk':60,'Buffalo Milk':80,'Toned Milk':50};
+const $=id=>document.getElementById(id);
+const money=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+function save(){localStorage.setItem(KEY,JSON.stringify(customers));render();}
+function render(){
+$('totalCustomers').textContent=customers.length;
+$('activeCustomers').textContent=customers.filter(c=>c.status==='Active').length;
+const d=new Date();const slot=d.getHours()<12?'Morning':'Evening';
+$('todayLitres').textContent=customers.filter(c=>c.status==='Active'&&(c.slot==='Both'||c.slot===slot)).reduce((s,c)=>s+Number(c.qty),0).toFixed(2)+' L';
+$('pendingAmount').textContent=money(customers.reduce((s,c)=>s+(Number(c.pending)||0),0));
+$('customerRows').innerHTML=customers.map(c=>'<tr><td>'+esc(c.name)+'</td><td>'+esc(c.phone)+'</td><td>'+esc(c.area+' / '+c.apartment)+'</td><td>'+esc(c.flat||'-')+'</td><td>'+esc(c.milk)+'</td><td>'+c.qty+' L</td><td>'+esc(c.slot)+'</td><td><span class="pill">'+esc(c.status)+'</span></td><td><button class="danger" onclick="removeCustomer(\''+c.id+'\')">Delete</button></td></tr>').join('');
+$('customerEmpty').style.display=customers.length?'none':'block';
+$('billCustomer').innerHTML='<option value="">All customers</option>'+customers.map(c=>'<option value="'+c.id+'">'+esc(c.name)+'</option>').join('');
+}
+function esc(s){return String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
+$('customerForm').addEventListener('submit',e=>{e.preventDefault();const v=id=>$(id).value.trim();customers.push({id:Date.now().toString(),name:v('cname'),phone:v('cphone'),area:v('carea'),apartment:v('capartment'),flat:v('cflat'),milk:v('cmilk'),qty:Number(v('cqty')),slot:v('cslot'),status:v('cstatus'),pending:0,paid:0});save();e.target.reset();$('cqty').value=1;alert('Customer saved on this device.');});
+window.removeCustomer=id=>{if(confirm('Delete this customer record?')){customers=customers.filter(c=>c.id!==id);save();}};
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));['customers','delivery','billing'].forEach(id=>$(id).classList.toggle('hidden',id!==b.dataset.tab));}));
+$('deliveryDate').value=new Date().toISOString().slice(0,10);$('billMonth').value=new Date().toISOString().slice(0,7);
+$('makeList').onclick=()=>{const slot=$('deliverySlot').value;const list=customers.filter(c=>c.status==='Active'&&(c.slot==='Both'||c.slot===slot));$('deliveryRows').innerHTML=list.map((c,i)=>'<tr><td>'+(i+1)+'</td><td>'+esc(c.name)+'</td><td>'+esc(c.apartment+' / '+c.flat)+'</td><td>'+esc(c.phone)+'</td><td>'+esc(c.milk)+'</td><td>'+c.qty+'</td><td><input type="checkbox" aria-label="Delivered"></td></tr>').join('');$('deliveryEmpty').textContent=list.length?'':'No active customers for this slot.';$('deliveryEmpty').style.display=list.length?'none':'block';};
+$('makeBill').onclick=()=>{const [y,m]=$('billMonth').value.split('-').map(Number);if(!y||!m){alert('Select billing month');return;}const days=new Date(y,m,0).getDate();const selected=$('billCustomer').value;const list=customers.filter(c=>c.status==='Active'&&(!selected||c.id===selected));$('billRows').innerHTML=list.map(c=>{const runs=c.slot==='Both'?2:1;const total=days*runs*Number(c.qty)*prices[c.milk];return '<tr><td>'+esc(c.name)+'</td><td>'+esc(c.milk)+'</td><td>'+c.qty+' L</td><td>'+esc(c.slot)+'</td><td>'+money(total)+'</td><td><select id="pay_'+c.id+'"><option>Pending</option><option>Paid</option><option>Part-paid</option></select></td><td><button class="secondary" onclick="markPay(\''+c.id+'\', '+total+')">Save</button></td></tr>';}).join('');$('billEmpty').textContent=list.length?'':'No active customers found.';$('billEmpty').style.display=list.length?'none':'block';};
+window.markPay=(id,total)=>{const c=customers.find(x=>x.id===id);if(!c)return;const status=$('pay_'+id).value;c.pending=status==='Paid'?0:status==='Part-paid'?total/2:total;c.paid=status==='Paid'?total:status==='Part-paid'?total/2:0;save();alert('Payment status saved on this device.');};
+function download(name,data,type){const blob=new Blob([data],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();URL.revokeObjectURL(a.href);}
+$('exportBtn').onclick=()=>{const rows=[['Name','Phone','Area','Apartment','Flat','Milk','Qty L','Slot','Status'],...customers.map(c=>[c.name,c.phone,c.area,c.apartment,c.flat,c.milk,c.qty,c.slot,c.status])];download('milkdoor-customers.csv',rows.map(r=>r.map(x=>'"'+String(x??'').replace(/"/g,'""')+'"').join(',')).join('\n'),'text/csv');};
+$('backupBtn').onclick=()=>download('milkdoor-backup.json',JSON.stringify(customers,null,2),'application/json');
+render();
+</script></body></html>
